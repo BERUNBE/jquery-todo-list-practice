@@ -1,6 +1,10 @@
 $(document)
     .ready(function () {
 
+        $("#button").click(function(){
+            $("ol").append('<li id="' + generateUUID() + '" class=""> <input name="done-todo" type="checkbox" class="done-todo">' + $('input:text').val() + '</li>');
+        });
+
         function generateUUID() {
             /*jshint bitwise:false */
             var i,
