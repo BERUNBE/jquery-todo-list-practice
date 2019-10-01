@@ -40,4 +40,30 @@ $(document)
                 }
             });
         }
+
+        $('#filters li a').click(function() { 
+            let allItems = $("ol").children();
+
+            if($(this).attr('data-filter') == "all") {
+                allItems.show();
+            }
+
+            if($(this).attr('data-filter') == "active") {
+                allItems.hide();
+                $('input[type="checkbox"]').each(function() {
+                    if($(this).prop("checked") == false){
+                        $(this).parent().show();
+                    }
+                });
+            }
+
+            if($(this).attr('data-filter') == "complete") {
+                allItems.hide();
+                $('input[type="checkbox"]').each(function() {
+                    if($(this).prop("checked") == true){
+                        $(this).parent().show();
+                    }
+                });
+            }
+        });
     });
