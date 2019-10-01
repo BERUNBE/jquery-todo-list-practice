@@ -23,16 +23,21 @@ $(document)
 
         // code to be implemented
 
+        toggleTaskStatus();
+
         $("#button").click(function(){
-            $("ol").append('<li id="' + generateUUID() + '" class=""> <input name="done-todo" type="checkbox" class="done-todo">' + $('input:text').val() + '</li>');
+            $("ol").append('<li id="' + generateUUID() + '" class=""> <input name="done-todo" type="checkbox" class="done-todo">' + ' ' + $('input:text').val() + '</li>');
+            toggleTaskStatus();
         });
-        
-        $('input[type="checkbox"]').click(function(){
-            if($(this).prop("checked") == true){
-                $(this).parent().css({ 'color': 'gray', 'text-decoration': 'line-through' });
-            }
-            else if($(this).prop("checked") == false){
-                $(this).parent().css({ 'color': 'black', 'text-decoration': 'none' });
-            }
-        });
+
+        function toggleTaskStatus() {
+            $('input[type="checkbox"]').click(function(){
+                if($(this).prop("checked") == true){
+                    $(this).parent().css({ 'color': 'gray', 'text-decoration': 'line-through' });
+                }
+                else if($(this).prop("checked") == false){
+                    $(this).parent().css({ 'color': 'black', 'text-decoration': 'none' });
+                }
+            });
+        }
     });
