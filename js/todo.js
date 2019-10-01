@@ -1,10 +1,6 @@
 $(document)
     .ready(function () {
 
-        $("#button").click(function(){
-            $("ol").append('<li id="' + generateUUID() + '" class=""> <input name="done-todo" type="checkbox" class="done-todo">' + $('input:text').val() + '</li>');
-        });
-
         function generateUUID() {
             /*jshint bitwise:false */
             var i,
@@ -26,4 +22,17 @@ $(document)
         }
 
         // code to be implemented
+
+        $("#button").click(function(){
+            $("ol").append('<li id="' + generateUUID() + '" class=""> <input name="done-todo" type="checkbox" class="done-todo">' + $('input:text').val() + '</li>');
+        });
+        
+        $('input[type="checkbox"]').click(function(){
+            if($(this).prop("checked") == true){
+                $(this).parent().css({ 'color': 'gray', 'text-decoration': 'line-through' });
+            }
+            else if($(this).prop("checked") == false){
+                $(this).parent().css({ 'color': 'black', 'text-decoration': 'none' });
+            }
+        });
     });
