@@ -28,6 +28,7 @@ $(document)
 
         $("#button").click(function(){
             $("ol").append('<li id="' + generateUUID() + '" class=""> <input name="done-todo" type="checkbox" class="done-todo">' + ' ' + $('input:text').val() + '</li>');
+            $('input.input-text').val('');
             toggleTaskStatus();
             editTaskDescription();
         });
@@ -51,7 +52,7 @@ $(document)
                     return (this.nodeType == 3);
                 }).remove();
                 $(this).children('textbox').remove();
-                
+
                 $(this).append('<textbox contenteditable=true>' + currentText + '</textbox>');
                 $(this).children().focus();
             });
