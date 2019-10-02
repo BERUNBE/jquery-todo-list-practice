@@ -24,14 +24,16 @@ $(document)
         // code to be implemented
 
         toggleTaskStatus();
+        editTaskDescription();
 
         $("#button").click(function(){
             $("ol").append('<li id="' + generateUUID() + '" class=""> <input name="done-todo" type="checkbox" class="done-todo">' + ' ' + $('input:text').val() + '</li>');
             toggleTaskStatus();
+            editTaskDescription();
         });
 
         function toggleTaskStatus() {
-            $('input[type="checkbox"]').click(function(){
+            $('li input[type="checkbox"]').click(function(){
                 if($(this).prop("checked") == true){
                     $(this).parent().css({ 'color': 'gray', 'text-decoration': 'line-through' });
                 }
@@ -41,7 +43,20 @@ $(document)
             });
         }
 
-        $('#filters li a').click(function() { 
+        function editTaskDescription() {
+            $('li').dblclick(function() {
+                let currentText = $(this).text();
+                $(this).text('');
+                $(this).append('<input name="done-todo" type="checkbox" class="done-todo">');
+                $(this).append('<textbox contenteditable=true>' + currentText + '</textbox>');
+                $('textbox').focus();
+            });
+            $('li input[type="checkbox"]').dblclick(function(){
+                return false;
+            });
+        }
+
+        $('#filters li a').click(function() {
             let allItems = $("ol").children();
 
             if($(this).attr('data-filter') == "all") {
@@ -50,7 +65,7 @@ $(document)
 
             if($(this).attr('data-filter') == "active") {
                 allItems.hide();
-                $('input[type="checkbox"]').each(function() {
+                $('li input[type="checkbox"]').each(function() {
                     if($(this).prop("checked") == false){
                         $(this).parent().show();
                     }
@@ -59,7 +74,7 @@ $(document)
 
             if($(this).attr('data-filter') == "complete") {
                 allItems.hide();
-                $('input[type="checkbox"]').each(function() {
+                $('li input[type="checkbox"]').each(function() {
                     if($(this).prop("checked") == true){
                         $(this).parent().show();
                     }
