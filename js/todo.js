@@ -65,5 +65,11 @@ $(document)
                     }
                 });
             }
+
+            $('ol li').css('background', 'white');
+            $('ol li:visible').each(function(i) {
+                if (i % 2 == 1) {
+                    $(this).css('background', '#f4ecec');
+            }});
         });
     });
