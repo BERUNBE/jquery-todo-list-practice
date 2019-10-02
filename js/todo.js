@@ -46,8 +46,9 @@ $(document)
         function editTaskDescription() {
             $('li').dblclick(function() {
                 let currentText = $(this).text();
-                $(this).text('');
-                $(this).append('<input name="done-todo" type="checkbox" class="done-todo">');
+                let checkbox = $(this).find('input');
+                $(this).empty();
+                $(this).append(checkbox);
                 $(this).append('<textbox contenteditable=true>' + currentText + '</textbox>');
                 $(this).children().focus();
             });
