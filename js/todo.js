@@ -49,7 +49,7 @@ $(document)
                 $(this).text('');
                 $(this).append('<input name="done-todo" type="checkbox" class="done-todo">');
                 $(this).append('<textbox contenteditable=true>' + currentText + '</textbox>');
-                $('textbox').focus();
+                $(this).children().focus();
             });
             $('li input[type="checkbox"]').dblclick(function(){
                 return false;
