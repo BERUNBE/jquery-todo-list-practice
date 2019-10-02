@@ -46,9 +46,12 @@ $(document)
         function editTaskDescription() {
             $('li').dblclick(function() {
                 let currentText = $(this).text();
+
                 $(this).contents().filter(function(){
                     return (this.nodeType == 3);
                 }).remove();
+                $(this).children('textbox').remove();
+                
                 $(this).append('<textbox contenteditable=true>' + currentText + '</textbox>');
                 $(this).children().focus();
             });
